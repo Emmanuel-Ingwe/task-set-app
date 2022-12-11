@@ -1,12 +1,24 @@
-import React from 'react';
+import PropTypes from "prop-types";
 
-const Header = () => {
-    return (
-        <div>
-            <h1>Taask Tracker</h1>
-            <title>Task tracker</title>
-        </div>
-    );
+const Header = ({ title }) => {
+	return (
+		<header>
+			<h1>{title} Task Tracker</h1>
+		</header>
+	);
 };
+
+Header.defaultProps = {
+	title: "Task Tracker",
+};
+
+Header.propTypes = {
+	title: PropTypes.string,
+};
+
+// const headStyle = {
+// 	color: "blue",
+// 	background: "pink",
+// };
 
 export default Header;
