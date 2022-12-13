@@ -5,6 +5,7 @@ import AddTask from "./AddTask";
 import { useState } from "react";
 
 const App = () => {
+	const [showAddTask, setShowAddTask] = useState(false);
 	const [task, setTask] = useState([
 		{
 			id: 1,
@@ -26,6 +27,12 @@ const App = () => {
 		},
 	]);
 
+	const addTask = (tasks) => {
+		const id = Math.floor(Math.random() * 10000) + 1;
+		const newTask = { id, ...tasks };
+		setTask({ ...task, newTask });
+	};
+
 	const deleteTasks = (id) => {
 		setTask(task.filter((tasks) => tasks.id !== id));
 	};
@@ -40,8 +47,8 @@ const App = () => {
 
 	return (
 		<div className='container'>
-			<Header />
-			<AddTask />
+			<Header onAdd={() => setShowAddTask(!showAddTask)} />
+			{showAddTask && <AddTask onAdd={addTask} />}
 			{task.length > 0 ? (
 				<Task task={task} onDelete={deleteTasks} onToggle={toggleReminder} />
 			) : (
