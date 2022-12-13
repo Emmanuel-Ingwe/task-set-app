@@ -1,6 +1,7 @@
 import "./App.css";
 import Header from "./Header";
 import Task from "./Task";
+import AddTask from "./AddTask";
 import { useState } from "react";
 
 const App = () => {
@@ -40,6 +41,7 @@ const App = () => {
 	return (
 		<div className='container'>
 			<Header />
+			<AddTask />
 			{task.length > 0 ? (
 				<Task task={task} onDelete={deleteTasks} onToggle={toggleReminder} />
 			) : (
