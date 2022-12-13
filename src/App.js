@@ -29,7 +29,13 @@ const App = () => {
 		setTask(task.filter((tasks) => tasks.id !== id));
 	};
 
-	const toggleReminder = (id) => {};
+	const toggleReminder = (id) => {
+		setTask(
+			task.map((tasks) =>
+				tasks.id === id ? { ...tasks, reminder: !tasks.reminder } : tasks
+			)
+		);
+	};
 
 	return (
 		<div className='container'>
